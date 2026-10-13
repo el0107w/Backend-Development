@@ -1,0 +1,16 @@
+Для практического примера (practical.py)
+1. http://localhost:3000/
+2. http://localhost:3000/api/status
+3. http://localhost:3000/api/info
+4. http://localhost:3000/api/users/5
+5. http://localhost:3000/api/users/123
+6. http://localhost:3000/anything-else
+
+Для индивидуального задания (app.py)
+1. http://localhost:3000/
+2. http://localhost:3000/api/recipes
+3. http://localhost:3000/api/chefs
+4. http://localhost:3000/api/recipes/1
+5. http://localhost:3000/api/recipes/123
+6. http://localhost:3000/api/chefs/Grole
+7. http://localhost:3000/anything-else
