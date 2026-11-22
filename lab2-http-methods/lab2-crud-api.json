@@ -1,0 +1,714 @@
+{
+  "info": {
+    "_postman_id": "9418ec32-e24c-4df5-9742-2394d0667d10",
+    "name": "Lab2 CRUD API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "59589277",
+    "_collection_link": "https://go.postman.co/collection/59589277-9418ec32-e24c-4df5-9742-2394d0667d10?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Items",
+      "item": [
+        {
+          "name": "GET All Items",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/items",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "items"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Item by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/items/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "items",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST Create Item",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Новый товар из Postman\",\r\n  \"price\": 500,\r\n  \"quantity\": 7\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/items",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "items"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT Update Item",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"name\": \"Обновлённый товар\",\r\n\"price\": 150,\r\n\"quantity\": 20\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/items/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "items",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Delete Item",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/items/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "items",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Errors",
+      "item": [
+        {
+          "name": "GET Nonexistent (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/items/999",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "items",
+                "999"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST Invalid Data (400)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/items",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "items"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Recipes",
+      "item": [
+        {
+          "name": "Errors",
+          "item": [
+            {
+              "name": "GET Nonexistent (404)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Статус 404 Not Found\", function () {\r\n    pm.response.to.have.status(404);\r\n});\r\n\r\npm.test(\"Ответ содержит поле error\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"error\");\r\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/items/999",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "items",
+                    "999"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST Invalid Data (400)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Статус 400 Bad Request\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Ответ содержит поле error\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"error\");\r\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/items",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "items"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Items",
+          "item": [
+            {
+              "name": "GET All Recipes",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Статус 200 OK\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Ответ в формате JSON\", function () {\r\n    pm.response.to.be.json;\r\n});\r\n\r\npm.test(\"Есть список рецептов\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.items).to.be.an(\"array\");\r\n    pm.expect(jsonData.items.length).to.be.above(0);\r\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/items",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "items"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET Recipe by ID",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Статус 200 OK\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Ответ в формате JSON\", function () {\r\n    pm.response.to.be.json;\r\n});\r\n\r\npm.test(\"Возвращён рецепт с ID=1\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.id).to.eql(1);\r\n    pm.expect(jsonData.title).to.include(\"Борщ\");\r\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/items/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "items",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST Create Recipe",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Статус 201 Created\", function () {\r\n    pm.response.to.have.status(201);\r\n});\r\n\r\npm.test(\"Ответ в формате JSON\", function () {\r\n    pm.response.to.be.json;\r\n});\r\n\r\npm.test(\"Создан рецепт с ID и данными\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"id\");\r\n    pm.expect(jsonData.title).to.eql(\"Окрошка\");\r\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"title\": \"Окрошка\", \"time\": 15, \"difficulty\": \"Легко\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/items",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "items"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PUT Update Recipe",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Статус 200 OK\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Ответ в формате JSON\", function () {\r\n    pm.response.to.be.json;\r\n});\r\n\r\npm.test(\"Рецепт полностью обновлён\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.id).to.eql(1);\r\n    pm.expect(jsonData.title).to.eql(\"Борщ украинский\");\r\n    pm.expect(jsonData.time).to.eql(80);\r\n    pm.expect(jsonData.difficulty).to.eql(\"Средне\");\r\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"title\": \"Борщ украинский\", \"time\": 80, \"difficulty\": \"Средне\"}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/items/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "items",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "DELETE Recipe",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Статус 204 No Content\", function () {\r\n    pm.response.to.have.status(204);\r\n});\r\n\r\npm.test(\"Тело ответа пустое\", function () {\r\n    pm.expect(pm.response.text()).to.eql(\"\");\r\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/items/3",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "items",
+                    "3"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PATCH Update Recipe",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Статус 200 OK\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Ответ в формате JSON\", function () {\r\n    pm.response.to.be.json;\r\n});\r\n\r\npm.test(\"Время обновлено на 25\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.id).to.eql(2);\r\n    pm.expect(jsonData.time).to.eql(25);\r\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"time\": 25}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/items/2",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "items",
+                    "2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET Search Recipes",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Статус 200 OK\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Ответ в формате JSON\", function () {\r\n    pm.response.to.be.json;\r\n});\r\n\r\npm.test(\"Найден рецепт по запросу Борщ\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.items).to.be.an(\"array\");\r\n    pm.expect(jsonData.items.length).to.be.above(0);\r\n    pm.expect(jsonData.items[0].title).to.include(\"Борщ\");\r\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/items?search=Борщ",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "items"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "Борщ"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET Paginate Recipes",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Статус 200 OK\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Ответ в формате JSON\", function () {\r\n    pm.response.to.be.json;\r\n});\r\n\r\npm.test(\"Возвращено не более 2 элементов на странице\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.items).to.be.an(\"array\");\r\n    pm.expect(jsonData.items.length).to.be.at.most(2);\r\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/items?page=1&limit=2",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "items"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "2"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET Sort Recipes",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Статус 200 OK\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Ответ в формате JSON\", function () {\r\n    pm.response.to.be.json;\r\n});\r\n\r\npm.test(\"Список отсортирован по убыванию времени\", function () {\r\n    const jsonData = pm.response.json();\r\n    const times = jsonData.items.map(item => item.time);\r\n    for (let i = 0; i < times.length - 1; i++) {\r\n        pm.expect(times[i]).to.be.at.least(times[i + 1]);\r\n    }\r\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/items?sort=time&order=desc",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "items"
+                  ],
+                  "query": [
+                    {
+                      "key": "sort",
+                      "value": "time"
+                    },
+                    {
+                      "key": "order",
+                      "value": "desc"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET Recipe Stats",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Статус 200 OK\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Ответ в формате JSON\", function () {\r\n    pm.response.to.be.json;\r\n});\r\n\r\npm.test(\"Статистика содержит среднее время\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"average_time\");\r\n    pm.expect(jsonData.average_time).to.be.a(\"number\");\r\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/items/stats",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "items",
+                    "stats"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET Related Recipes",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Статус 200 OK\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Ответ в формате JSON\", function () {\r\n    pm.response.to.be.json;\r\n});\r\n\r\npm.test(\"Возвращён массив связанных рецептов\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.related_items).to.be.an(\"array\");\r\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/items/1/related",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "items",
+                    "1",
+                    "related"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST Bulk Create",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Статус 201 Created\", function () {\r\n    pm.response.to.have.status(201);\r\n});\r\n\r\npm.test(\"Ответ в формате JSON\", function () {\r\n    pm.response.to.be.json;\r\n});\r\n\r\npm.test(\"Создано несколько рецептов\", function () {\r\n    const jsonData = pm.response.json();\r\n    const created = Array.isArray(jsonData) ? jsonData : (jsonData.items || jsonData.created);\r\n    pm.expect(created).to.be.an(\"array\");\r\n    pm.expect(created.length).to.eql(2);\r\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[{\"title\": \"Пицца\", \"time\": 30}, {\"title\": \"Салат\", \"time\": 10}]\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/items/bulk",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "items",
+                    "bulk"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
