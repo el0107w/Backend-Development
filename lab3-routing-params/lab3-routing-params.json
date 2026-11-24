@@ -1,0 +1,602 @@
+{
+  "info": {
+    "_postman_id": "9161d027-96ab-40b8-8565-19e7f24f0d00",
+    "name": "Lab3 Routing Params",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "59589277",
+    "_collection_link": "https://go.postman.co/collection/59589277-9161d027-96ab-40b8-8565-19e7f24f0d00?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Cities",
+      "item": [
+        {
+          "name": "Errors",
+          "item": [
+            {
+              "name": "GET Nonexistent City (404)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/cities/999",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "cities",
+                    "999"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET Invalid City ID (400)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/cities/abc",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "cities",
+                    "abc"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET Any Other Route (404)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/anything-else",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "anything-else"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "GET All Cities",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/cities",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "cities"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET City by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/cities/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "cities",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET City Area",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/cities/1/area",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "cities",
+                "1",
+                "area"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Country Cities",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/countries/Россия/cities",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "countries",
+                "Россия",
+                "cities"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Search Cities",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/cities?search=Москва",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "cities"
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "Москва"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Sort Cities",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/cities?sort=population&order=desc",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "cities"
+              ],
+              "query": [
+                {
+                  "key": "sort",
+                  "value": "population"
+                },
+                {
+                  "key": "order",
+                  "value": "desc"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Paginate Cities",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/cities?page=1&limit=2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "cities"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "2"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET City Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/cities/1/details",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "cities",
+                "1",
+                "details"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Country City",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/countries/Россия/cities/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "countries",
+                "Россия",
+                "cities",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Recipes",
+      "item": [
+        {
+          "name": "Errors",
+          "item": [
+            {
+              "name": "GET Nonexistent Recipe (404)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Статус 404 Not Found\", function () {\r\n    pm.response.to.have.status(404);\r\n});\r\n\r\npm.test(\"Ответ в формате JSON\", function () {\r\n    pm.response.to.be.json;\r\n});\r\n\r\npm.test(\"Сообщение об ошибке указывает на отсутствие рецепта\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"error\");\r\n    pm.expect(jsonData.error.toLowerCase()).to.include(\"не найден\");\r\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/recipes/999",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "recipes",
+                    "999"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET Invalid Recipe ID (400)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Статус 400 Bad Request\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Ответ в формате JSON\", function () {\r\n    pm.response.to.be.json;\r\n});\r\n\r\npm.test(\"Сообщение об ошибке указывает на неверный формат ID\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"error\");\r\n    pm.expect(jsonData.error.toLowerCase()).to.satisfy(function(text) {\r\n        return text.includes(\"числом\") || text.includes(\"неверн\");\r\n    });\r\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/recipes/abc",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "recipes",
+                    "abc"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "GET All Recipes",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Статус 200 OK\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Ответ в формате JSON\", function () {\r\n    pm.response.to.be.json;\r\n});\r\n\r\npm.test(\"Есть список рецептов\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.recipes || jsonData.items).to.be.an(\"array\");\r\n    pm.expect((jsonData.recipes || jsonData.items).length).to.be.above(0);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/recipes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "recipes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Recipe by ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Статус 200 OK\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Ответ в формате JSON\", function () {\r\n    pm.response.to.be.json;\r\n});\r\n\r\npm.test(\"Данные рецепта содержат id, title и time\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"id\");\r\n    pm.expect(jsonData).to.have.property(\"title\");\r\n    pm.expect(jsonData).to.have.property(\"time\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/recipes/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "recipes",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Recipe Steps",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Статус 200 OK\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Ответ в формате JSON\", function () {\r\n    pm.response.to.be.json;\r\n});\r\n\r\npm.test(\"Есть список шагов рецепта\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.steps).to.be.an(\"array\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/recipes/1/steps",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "recipes",
+                "1",
+                "steps"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Recipes by Difficulty",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Статус 200 OK\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Ответ в формате JSON\", function () {\r\n    pm.response.to.be.json;\r\n});\r\n\r\npm.test(\"Фильтрация по категории сложности работает\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData.recipes || jsonData.items).to.be.an(\"array\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/difficulties/Легко/recipes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "difficulties",
+                "Легко",
+                "recipes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Search Sort Paginate Recipes",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Статус 200 OK\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Ответ в формате JSON\", function () {\r\n    pm.response.to.be.json;\r\n});\r\n\r\npm.test(\"Ответ содержит корректные данные пагинации\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"count\");\r\n    pm.expect(jsonData).to.have.property(\"page\");\r\n    pm.expect(jsonData).to.have.property(\"limit\");\r\n    pm.expect(jsonData).to.have.property(\"totalPages\");\r\n    pm.expect(jsonData.recipes || jsonData.items).to.be.an(\"array\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/recipes/search?search=Борщ&sort=time&order=desc&page=1&limit=2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "recipes",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "Борщ"
+                },
+                {
+                  "key": "sort",
+                  "value": "time"
+                },
+                {
+                  "key": "order",
+                  "value": "desc"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "2"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Recipe Details",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Детальная информация содержит рецепт и вложенные данные\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"recipe\");\r\n    // Проверяем наличие хотя бы одного вложенного массива\r\n    const hasNested = [\"steps\", \"ingredients\", \"reviews\"]\r\n        .some(key => Array.isArray(jsonData[key]));\r\n    pm.expect(hasNested, \"В ответе нет вложенных данных\").to.be.true;\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/recipes/1/details",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "recipes",
+                "1",
+                "details"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Recipe in Difficulty",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Статус 200 OK\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Ответ в формате JSON\", function () {\r\n    pm.response.to.be.json;\r\n});\r\n\r\npm.test(\"Рецепт успешно найден в указанной категории\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"recipe\");\r\n    pm.expect(jsonData.recipe).to.have.property(\"id\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/difficulties/Средне/recipes/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "difficulties",
+                "Средне",
+                "recipes",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
